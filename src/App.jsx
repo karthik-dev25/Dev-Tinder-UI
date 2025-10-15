@@ -6,11 +6,11 @@ import Profile from "./components/profile/Profile";
 import store from "./store/store";
 import { Provider } from "react-redux";
 import Feed from "./components/feed/Feed";
+import ToastMessage from "./components/ToastMessage";
 
 function App() {
   return (
     <>
-    
       <Provider store={store}>
           <BrowserRouter basename="/">
             <Routes>
@@ -22,6 +22,7 @@ function App() {
               </Route>
             </Routes>
           </BrowserRouter>
+          <ToastMessage />
       </Provider>
     </>
   );

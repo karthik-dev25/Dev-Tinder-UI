@@ -18,7 +18,6 @@ const Body = () => {
       });
       dispatch(addUser(res.data));
     } catch (error) {
-      console.log(error.status);
       if (error.status === 401) {
         navigate("/login");
       }
@@ -32,7 +31,6 @@ const Body = () => {
   return (
     <div>
       <Navbar />
-
       <Outlet />
       <Footer />
     </div>

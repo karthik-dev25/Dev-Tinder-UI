@@ -4,7 +4,6 @@ import { removeUser } from "../store/authSlice";
 import axios from "axios";
 import { Link, useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constants";
-import { toast } from "react-toastify";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ const Navbar = () => {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
       dispatch(removeUser());
       navigate("/login");
-      toast.success("Logout Success!!")
     } catch (error) {
       console.log(error.message);
     }

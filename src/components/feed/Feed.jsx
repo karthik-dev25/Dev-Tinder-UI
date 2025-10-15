@@ -4,9 +4,11 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../../store/feedSlice";
 import FeedCard from "./FeedCard";
+import { useNavigate } from "react-router";
 
 const Feed = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const feeds = useSelector((store) => store.feed);
   const getFeed = async () => {
     try {
@@ -16,6 +18,9 @@ const Feed = () => {
       console.log(res);
       dispatch(addFeed(res?.data?.data));
     } catch (error) {
+      if (error.status === 401) {
+        navigate("/login");
+      }
       console.log(error)
     }
   };
@@ -24,7 +29,7 @@ const Feed = () => {
   }, []);
   return (
     <div className="flex justify-center items-center h-96">
-      <FeedCard feed={feeds?.[0]}/>
+     {feeds && <FeedCard feed={feeds?.[0]}/>}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../../store/authSlice";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../../utils/constants";
+import { showToast } from "../../store/toastSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,14 @@ const Login = () => {
       },{withCredentials:true});
       dispatch(addUser(res.data.data));
       navigate("/")
+      dispatch(
+        showToast({
+          type: "success",
+          message: "Login Successful!!",
+        })
+      );
     } catch (error) {
-      setError(error?.response?.data)
-      console.log("ERROR: ", error.message);
+      setError(error?.response?.data);
     }
   };
   return (

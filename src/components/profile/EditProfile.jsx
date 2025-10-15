@@ -1,8 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
+import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
 import { addUser } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
+import { showToast } from "../../store/toastSlice";
 
 const EditProfile = ({ user }) => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const EditProfile = ({ user }) => {
   const [gender, setGender] = useState(user?.gender || "");
   const [about, setAbout] = useState(user?.about || "");
   const [photoUrl, setPhotoUrl] = useState(user?.photoUrl || "url");
-  // const [error,setError] = useState("");
+  const [error, setError] = useState("");
 
   const handleProfielSave = async () => {
     try {
@@ -27,10 +28,15 @@ const EditProfile = ({ user }) => {
       const res = await axios.patch(BASE_URL + "/profile/edit", payload, {
         withCredentials: true,
       });
-      dispatch(addUser(res.data));
-      // logic here
+      dispatch(addUser(res.data.data));
+      dispatch(
+        showToast({
+          type: "success",
+          message: "Login Successful!!",
+        })
+      );
     } catch (error) {
-      console.log(error);
+      setError(error?.response?.data);
     }
   };
   return (
@@ -72,13 +78,15 @@ const EditProfile = ({ user }) => {
                   placeholder="Age"
                 />
                 <label className="label">Gender</label>
-                <input
-                  type="text"
+                <select
+                  className="select"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
-                  className="input"
-                  placeholder="Gender"
-                />
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
                 <label className="label">About</label>
                 <input
                   type="text"
@@ -95,7 +103,7 @@ const EditProfile = ({ user }) => {
                   className="input"
                   placeholder="Photo Url"
                 />
-                {/* <p className="text-red-500">{error}</p> */}
+                <p className="text-red-500">{error}</p>
                 <button
                   className="btn btn-neutral mt-4"
                   onClick={handleProfielSave}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const FeedCard = ({ feed }) => {
+const FeedCard = ({ feed, isNavigationButton = true }) => {
   return (
     <div className="card bg-base-100 w-78 shadow-sm">
       <figure>
@@ -15,10 +15,12 @@ const FeedCard = ({ feed }) => {
       <div className="card-body">
         <h2 className="card-title">{feed?.firstName + " " + feed?.lastName}</h2>
         <p>{feed?.about}</p>
-        <div className="card-actions justify-between">
-          <button className="btn btn-secondary">Ignored</button>
-          <button className="btn btn-primary">Interested</button>
-        </div>
+        {isNavigationButton && (
+          <div className="card-actions justify-between">
+            <button className="btn btn-secondary">Ignored</button>
+            <button className="btn btn-primary">Interested</button>
+          </div>
+        )}
       </div>
     </div>
   );
