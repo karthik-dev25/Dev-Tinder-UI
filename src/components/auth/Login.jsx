@@ -1,15 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUser } from "../store/authSlice";
+import { addUser } from "../../store/authSlice";
 import { useNavigate } from "react-router";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "../../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [emailId, setEmailId] = useState("karthik@gmail.com");
   const [password, setPassword] = useState("Karthik@123");
+  const [error,setError] = useState("");
   const handleLogin = async () => {
     try {
       const res = await axios.post(BASE_URL + "/login", {
@@ -19,6 +20,7 @@ const Login = () => {
       dispatch(addUser(res.data.data));
       navigate("/")
     } catch (error) {
+      setError(error?.response?.data)
       console.log("ERROR: ", error.message);
     }
   };
@@ -44,6 +46,7 @@ const Login = () => {
                 className="input"
                 placeholder="Password"
               />
+              <p className="text-red-500">{error}</p>
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>

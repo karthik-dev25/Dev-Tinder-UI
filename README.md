@@ -17,6 +17,9 @@
 - Login and see if your data is coming  properly in the store
 - NavBar should update as soon as user logs in
 - Refactor out code to add constant file
+- you should not be accessing the other routes without login
+- if token is not present redirect to login page
+- Create a Logout feature
 
 
 
