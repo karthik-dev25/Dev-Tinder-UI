@@ -20,6 +20,18 @@
 - you should not be accessing the other routes without login
 - if token is not present redirect to login page
 - Create a Logout feature
+- Build the feed feature
+- build the user card on feed
+- Build Profile Edit feture
+- Build Toast feature
+- New Page - To see all my connections
+- New Page - To see all my requests
+- Feature - Accept/Reject Connection Request
+
+Remainig:
+- Send or ignore API integration
+- Signup API integration
+- Testing all the features of the application
 
 
 

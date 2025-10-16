@@ -16,6 +16,7 @@ const EditProfile = ({ user }) => {
   const [error, setError] = useState("");
 
   const handleProfielSave = async () => {
+    setError("")
     try {
       const payload = {
         firstName,
@@ -32,7 +33,7 @@ const EditProfile = ({ user }) => {
       dispatch(
         showToast({
           type: "success",
-          message: "Login Successful!!",
+          message: "Profile Saved Successfully!!",
         })
       );
     } catch (error) {
