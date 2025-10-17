@@ -10,7 +10,7 @@ const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user?.firstName);
   const [lastName, setLastName] = useState(user?.lastName || "");
   const [age, setAge] = useState(user?.age || "");
-  const [gender, setGender] = useState(user?.gender || "");
+  const [gender, setGender] = useState(user?.gender || "select a gender");
   const [about, setAbout] = useState(user?.about || "");
   const [photoUrl, setPhotoUrl] = useState(user?.photoUrl || "url");
   const [error, setError] = useState("");
@@ -80,22 +80,18 @@ const EditProfile = ({ user }) => {
                 />
                 <label className="label">Gender</label>
                 <select
+                  defaultValue="Select a Gender"
                   className="select"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                 >
+                  <option disabled={true} value="select a gender">Select a Gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                   <option value="other">Other</option>
                 </select>
                 <label className="label">About</label>
-                <input
-                  type="text"
-                  value={about}
-                  onChange={(e) => setAbout(e.target.value)}
-                  className="input"
-                  placeholder="About"
-                />
+                <textarea className="textarea" value={about} onChange={(e)=> setAbout(e.target.value)} placeholder="Bio"/>
                 <label className="label">Photo Url</label>
                 <input
                   type="text"

@@ -16,7 +16,7 @@ const Navbar = () => {
       dispatch(removeUser());
       navigate("/login");
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
   return (
@@ -69,13 +69,9 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <div className="w-10 rounded-full mx-5">
-            <button
-              className="cursor-pointer"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
+          <div className="flex gap-5 mr-2">
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
           </div>
         )}
       </div>

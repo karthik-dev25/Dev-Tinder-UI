@@ -6,7 +6,6 @@ const ConnectionsCard = ({
   isRequests = false,
   handleReview,
 }) => {
-  console.log(user);
   const { photoUrl, firstName, lastName, about } = isConnections ? user : user.fromUserId;
   return (
     <div className="w-[75%] mx-auto flex justify-center items-center mt-4">
