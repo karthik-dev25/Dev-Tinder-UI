@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { BASE_URL } from "../../utils/constants";
 import { showToast } from "../../store/toastSlice";
+import { addUser } from "../../store/authSlice";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -21,10 +22,11 @@ const SignUp = () => {
         emailId,
         password,
       };
-      await axios.post(BASE_URL + "/signup", payload, {
+      const res = await axios.post(BASE_URL + "/signup", payload, {
         withCredentials: true,
       });
-      navigate("/");
+      dispatch(addUser(res.data.data));
+      navigate("/profile");
       dispatch(
         showToast({
           type: "success",
@@ -36,7 +38,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="hero bg-base-200 w-full">
+    <div className="hero w-full">
       <div className="hero-content flex-col lg:flex-row-reverse w-full">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body w-full">

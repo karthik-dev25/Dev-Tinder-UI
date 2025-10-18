@@ -35,7 +35,7 @@ const Connections = () => {
       </div>
     );
   return (
-    <div className="w-full flex-col justify-center items-center mt-5">
+    <div className="w-full flex-col justify-center items-center mt-5 overflow-y-auto my-60">
       <h1 className="flex justify-center text-2xl font-bold mb-5">
         Connections
       </h1>

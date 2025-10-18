@@ -9,8 +9,8 @@ import { showToast } from "../../store/toastSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [emailId, setEmailId] = useState("karthik@gmail.com");
-  const [password, setPassword] = useState("Karthik@123");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
   const [error,setError] = useState("");
   const handleLogin = async () => {
     try {
@@ -31,7 +31,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="hero bg-base-200 w-full">
+    <div className="hero w-full">
       <div className="hero-content flex-col lg:flex-row-reverse w-full">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body w-full">

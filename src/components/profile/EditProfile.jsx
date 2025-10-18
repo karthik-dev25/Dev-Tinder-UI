@@ -12,7 +12,7 @@ const EditProfile = ({ user }) => {
   const [age, setAge] = useState(user?.age || "");
   const [gender, setGender] = useState(user?.gender || "select a gender");
   const [about, setAbout] = useState(user?.about || "");
-  const [photoUrl, setPhotoUrl] = useState(user?.photoUrl || "url");
+  const [photoUrl, setPhotoUrl] = useState(user?.photoUrl || "");
   const [error, setError] = useState("");
 
   const handleProfielSave = async () => {
@@ -41,8 +41,7 @@ const EditProfile = ({ user }) => {
     }
   };
   return (
-    <div>
-      <div className="hero bg-base-200 w-full">
+      <div className="hero w-full mb-5">
         <div className="hero-content flex-col w-full">
           <div className="flex justify-center">
             <img
@@ -80,7 +79,6 @@ const EditProfile = ({ user }) => {
                 />
                 <label className="label">Gender</label>
                 <select
-                  defaultValue="Select a Gender"
                   className="select"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
@@ -112,7 +110,6 @@ const EditProfile = ({ user }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

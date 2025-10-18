@@ -7,6 +7,7 @@ const FeedCard = ({ feed, handleSendRequest }) => {
     <div className="card bg-base-100 w-78 shadow-sm">
       <figure>
         <img
+        className="h-56"
           src={
             photoUrl ||
             "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"

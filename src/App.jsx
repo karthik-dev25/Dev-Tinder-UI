@@ -10,6 +10,7 @@ import ToastMessage from "./components/ToastMessage";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
 import SignUp from "./components/auth/SignUp";
+import ForgotPassword from "./components/auth/ForgotPassword";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/connections" element={<Connections />} />
                 <Route path="/requests" element={<Requests />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/forgotPassword" element={<ForgotPassword />} />
               </Route>
             </Routes>
           </BrowserRouter>

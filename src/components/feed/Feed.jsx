@@ -55,10 +55,12 @@ const Feed = () => {
     if (!feeds) getFeed();
   }, []);
   return (
-    <div className="flex justify-center items-center h-96">
-      {feeds?.length ? (
-        <FeedCard feed={feeds?.[0]} handleSendRequest={handleSendRequest} />
-      ) : <div className="text-2xl font-bold">No Dev Feeds available!!</div>}
+    <div className="flex justify-center items-center h-[40rem] lg:h-[28rem]">
+        {feeds?.length ? (
+          <FeedCard feed={feeds?.[0]} handleSendRequest={handleSendRequest} />
+        ) : (
+          <div className="text-2xl font-bold">No Dev Feeds available!!</div>
+        )}
     </div>
   );
 };
