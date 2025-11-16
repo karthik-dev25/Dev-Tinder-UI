@@ -89,3 +89,11 @@ Remainig:
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
     }
+
+# Adding a Custom domain name
+ -  purchased a domain name from godaddy
+ - signup on cloudflare and add a new domain name
+ - change the name server on godaddy and point it to cloudflare
+ - wait for somtime till your name servers are updated ~15 min
+ - DNS Record: A devtinder.in - your IP
+ - Enable SSL for website
